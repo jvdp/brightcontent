@@ -3,6 +3,8 @@ module Brightcontent
     include TheSortableTreeController::Rebuild
     helper TheSortableTree::Engine.helpers
 
+    defaults resource_class: Brightcontent.page_model
+
     def self.inherited(subclass)
       subclass.class_eval { per_page 0 }
       super
@@ -13,7 +15,7 @@ module Brightcontent
     end
 
     def sortable_model
-      Brightcontent::Page
+      Brightcontent.page_model
     end
 
     protected
